@@ -1,6 +1,6 @@
 """
 @author: imoki
-@github: https://github.bom/imoki
+@github: https://github.com/imoki
 @file: downMonitor.py
 @time: 2024/11/21
 @desc: bilibili视频下载脚本，支持bvid下载，支持bark推送消息。
