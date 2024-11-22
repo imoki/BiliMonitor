@@ -1,9 +1,11 @@
 
 /*
+    作者：imoki
+    仓库：https://github.com/imoki
     脚本名：pureMonitor
-    脚本兼容: 金山文档（1.0）
+    脚本兼容: 金山文档（airscript 1.0）
     更新时间：20241122
-    备注：监控bilibili合集视频是否更新。
+    简介：监控bilibili合集视频是否更新。
           纯监控脚本，仅监控合集是否更新，并不会下载视频。若需下载视频请配合downMonitor.py使用。
           将本脚本加入金山文档定时任务，设置每日或多日一次即可，若有新增合集视频则会发送消息通知。请勿频繁监控。
           填写bvidList和key，bvidList填合集的bvid，key填bark推送的key
