@@ -12,6 +12,12 @@
 </div>
 </div>
 
+## 🍻 交流渠道  
+B站：**无盐七**  
+QQ群：**963592267**  
+公众号：**默库**  
+
+
 ## ✨ 简介
 b站up最新合集视频监控。  
 仅下载今天和昨天内容，且不会重复下载，保存在自定义文件夹下。  
@@ -37,6 +43,13 @@ python downMonitor.py
   
 方法3：加入windows定时任务  
 将脚本放入定时任务中，可设置每隔一天执行一次，有新合集视频则会下载。
+
+  
+### 👑 参考项目
+基于PyDracula的图形化界面  
+https://github.com/Wanderson-Magalhaes  
+基于周棋洛开发的后端进行数据交互  
+https://github.com/Zhouqluo  
 
 
 <!-- LINK GROUP -->
