@@ -50,6 +50,8 @@ python downMonitor.py
 https://github.com/Wanderson-Magalhaes  
 基于周棋洛开发的后端进行数据交互  
 https://github.com/Zhouqluo  
+基于RayWangQvQ进行每日任务  
+https://github.com/RayWangQvQ/BiliBiliToolPro  
 
 
 <!-- LINK GROUP -->
