@@ -13,7 +13,7 @@
 </div>
 
 ## 🍻 交流渠道  
-B站：**无盐七**  
+<a href="https://space.bilibili.com/3546828310055281">B站：**无盐七**</a>  
 QQ群：**963592267**  
 公众号：**默库**  
 
@@ -23,7 +23,11 @@ b站up最新合集视频监控。
 仅下载今天和昨天内容，且不会重复下载，保存在自定义文件夹下。  
 具备bark消息推送功能。  
 
-## 🍨 教程（**请勿频繁运行**） 
+## 📺️ 视频教程
+[![](https://img.shields.io/badge/哔哩哨兵-无盐七-blue)](https://www.bilibili.com/video/BV1hCrUYAEgj/) https://www.bilibili.com/video/BV1hCrUYAEgj/
+  
+
+## 🍨 非图形化脚本文字教程（**请勿频繁运行**） 
 ### ✨ bili纯监控（pureMonitor.js）
 **纯监控脚本**  
 仅监控合集是否更新，并不会下载视频。若需下载视频请配合downMonitor.py使用。  
@@ -47,11 +51,13 @@ python downMonitor.py
   
 ### 👑 参考项目
 基于PyDracula的图形化界面  
-https://github.com/Wanderson-Magalhaes  
-基于周棋洛开发的后端进行数据交互  
-https://github.com/Zhouqluo  
+https://github.com/Wanderson-Magalhaes    
+哔哩哔哩-API收集整理  
+https://github.com/SocialSisterYi  
 基于RayWangQvQ进行每日任务  
 https://github.com/RayWangQvQ/BiliBiliToolPro  
+基于周棋洛开发的后端进行数据交互  
+https://github.com/Zhouqluo  
 
 
 <!-- LINK GROUP -->
