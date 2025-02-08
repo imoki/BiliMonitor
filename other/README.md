@@ -19,12 +19,34 @@ QQ群：**963592267**
 
 
 ## ✨ 简介
-哔哩哨兵，一款监控最新视频、定时下载及执行每日任务的软件！  
- 
+b站up最新合集视频监控。  
+仅下载今天和昨天内容，且不会重复下载，保存在自定义文件夹下。  
+具备bark消息推送功能。  
 
 ## 📺️ 视频教程
 [![](https://img.shields.io/badge/哔哩哨兵-无盐七-blue)](https://www.bilibili.com/video/BV1hCrUYAEgj/) https://www.bilibili.com/video/BV1hCrUYAEgj/
   
+
+## 🍨 非图形化脚本文字教程（**请勿频繁运行**） 
+### ✨ bili纯监控（pureMonitor.js）
+**纯监控脚本**  
+仅监控合集是否更新，并不会下载视频。若需下载视频请配合downMonitor.py使用。  
+将pureMonitor脚本加入金山文档定时任务，设置每日或多日一次即可。  
+若有新增合集视频则会发送消息通知。  
+  
+  
+### ✨ bili下载监控（downMonitor.py）
+**下载最新合集视频脚本**  
+方法1：直接用python运行
+```python
+python downMonitor.py
+```  
+  
+方法2：制作bat脚本将bat脚本加入开机自启动。  
+开机时自动检查是否有最新合集视频，有则下载。  
+  
+方法3：加入windows定时任务  
+将脚本放入定时任务中，可设置每隔一天执行一次，有新合集视频则会下载。
 
   
 ### 👑 参考项目
