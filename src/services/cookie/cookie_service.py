@@ -217,8 +217,8 @@ class CookieService():
             if items:
                 # 从0开始，所以要减1
                 if 0 <= index < len(items):
-                    items[index]["uid"] = item_text_1
-                    items[index]["name"] = item_text_2
+                    items[index]["nickname"] = item_text_1
+                    items[index]["cookie"] = item_text_2
                     items[index]["notes"] = item_text_3
 
                 self.configManager.update_config(self.key, items)
