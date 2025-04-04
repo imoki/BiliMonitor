@@ -11,30 +11,15 @@
 <!-- SHIELD GROUP -->
 </div>
 </div>
-
-## 🍻 交流渠道  
-<a href="https://space.bilibili.com/3546828310055281">B站：**无盐七**</a>  
-QQ群：**963592267**  
-公众号：**默库**  
-
-
-## ✨ 简介
-哔哩哨兵，一款监控最新视频、定时下载及执行每日任务的软件！  
- 
-
-## 📺️ 视频教程
-[![](https://img.shields.io/badge/哔哩哨兵-无盐七-blue)](https://www.bilibili.com/video/BV1hCrUYAEgj/) https://www.bilibili.com/video/BV1hCrUYAEgj/
-  
-
   
 ### 👑 参考项目
-基于PyDracula的图形化界面  
+PyDracula  
 https://github.com/Wanderson-Magalhaes    
-哔哩哔哩-API收集整理  
+API  
 https://github.com/SocialSisterYi  
-基于RayWangQvQ进行每日任务  
+RayWangQvQ  
 https://github.com/RayWangQvQ/BiliBiliToolPro  
-基于周棋洛开发的后端进行数据交互  
+周棋洛  
 https://github.com/Zhouqluo  
 
 
