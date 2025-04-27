@@ -1,0 +1,25 @@
+{
+    "notes":"这个config_example.json是示例文件，仅用作config.json文件的参考和备份用。",
+    "uids": [
+        {
+            "uid": "456664753",
+            "notes": "央视新闻的uid。这个notes是备注，可填可不填。如下方的例子，需要多少个up就增加多少个uid"
+        },
+        {
+            "uid": "46470268",
+            "notes": ""
+        },
+        {
+            "uid": "1343321779"
+        }
+    ],
+    "crons": [
+        {
+            "name": "哔哩视频定时下载",
+            "cron": "17:30",
+            "type": 0,
+            "notes": "uid填写up主的uid。cron填写定时时间，每天这个时间会执行任务"
+        }
+    ],
+    "version": "2.0"
+}

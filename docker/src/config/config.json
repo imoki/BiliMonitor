@@ -1,0 +1,14 @@
+{
+    "uids": [
+        {"uid": "","notes": ""}
+    ],
+    "crons": [
+        {
+            "name": "哔哩视频定时下载",
+            "cron": "17:30",
+            "type": 0,
+            "notes": "uid填写up主的uid。cron填写定时时间，每天这个时间会执行任务"
+        }
+    ],
+    "version": "2.0"
+}
