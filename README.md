@@ -11,8 +11,11 @@
 <!-- SHIELD GROUP -->
 </div>
 </div>
-  
-## docker使用方法
+
+## windows使用方法
+项目右侧的**Releases**中下载最新版本，解压即可使用
+
+## docker使用方法（linux使用方法，下载docker后拉取bilimonitor镜像即可使用）
 1. 拉取Docker镜像  
 ```
 docker pull imoki/bilimonitor:latest
@@ -66,11 +69,83 @@ vim /app/src/config/config.json
 ```
  
   
-## docker程序文件说明
+## 程序文件说明
 仅需配置config.json文件即可，每天会自动定时执行。  
 config.json文件路径：/app/src/config/config.json  
 1. uid填写up主的uid。  
-2. cron填写定时时间，每天指定时间会执行任务。  
+2. cron填写定时时间，每天指定时间会执行任务。
+
+## 🖥️ 二次开发步骤
+windows平台，vscode编辑器，python3.9环境开发  
+1. vscode 安装插件：PyQt  
+并进行配置（以下D:\Python3913替换为你本地python路径）  
+```
+选项：
+Pyqt-integration › Pyrcc: Cmd
+'pyrcc' command file, you can also specify a path
+填入：
+D:\Python3913\Scripts\pyside6-rcc.exe
+
+选项：
+Pyqt-integration › Pyuic: Cmd
+'pyuic' command file, you can also specify a path
+填入：
+D:\Python3913\Scripts\pyside6-uic.exe
+
+选项：
+Pyqt-integration › Qtdesigner: Path
+Path of QT designer
+填入：
+D:\Python3913\Lib\site-packages\PySide6\designer.exe
+```  
+2. 下载此项目源码到本地，并进入主目录中
+```
+git clone https://github.com/imoki/BiliMonitor.git
+cd BiliMonitor
+```  
+4. 安装第三方python库（若运行命令后依旧缺少某个库，则使用pip install xxx，单独安装，xxx为缺少的模块）  
+```
+pip install -r requirements.txt
+```
+4. UI界面编辑（采用图形化编辑UI界面需安装“Qt Designer”，以下用此工具编辑UI界面）  
+4.1 在vscode中选择main.ui文件并右键点击，选择：PyQt: Edit in Designer。使用“Qt Designer”工具编辑完成并保存。  
+4.2 在vscode中选择main.ui文件并右键点击，选择：PyQt: Compile form。会在主目录下自动生成Ui_main.py文件。  
+编辑Ui_main.py文件的第607行
+将
+``` 
+font2.setWeight(QFont.)
+```  
+改为：
+```
+font2.setWeight(QFont.Normal)
+```
+将
+``` 
+import resources_rc
+```  
+改为：
+```
+from . resources_rc import *
+```
+将主目录下的Ui_main.py内容覆盖掉modules下的ui_main.py内容   
+4. 根据自己的需求修改程序逻辑代码  
+基本只需要改“main.py”文件和“src”目录下的文件即可，其他代码无需改动。    
+5. 运行
+```
+python main.py
+```
+
+6. 打包成EXE可执行文件  
+版本格式：主版本号.次版本号.修订号（如 v5.7.0）  
+版本递增规则：  
+修复bug时增加修订号（第三位）：v5.7.0 → v5.7.1  
+小功能更新时增加次版本号（第二位）：v5.7.0 → v5.8.0  
+大功能更新或架构更新时增加主版本号（第一位）：v5.7.0 → v6.0.0  
+```
+pyinstaller -w -i ./icon/icon.ico --name=BiliMonitor_v5.7.0.exe -F main.py 
+```
+
+7. 上传项目到github，可执行文件的压缩包上传到releases，即可成为项目贡献者     
   
 ### 👑 参考项目
 PyDracula  
