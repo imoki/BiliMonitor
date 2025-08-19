@@ -11,7 +11,7 @@ import os
 from urllib.parse import quote
 import random
 import math
-import qrcode
+# import qrcode
 import threading
 import gzip
 from io import BytesIO
@@ -322,6 +322,54 @@ class DownloadService():
 
     # def download_file(self, rowIndex, url, title):
     #     print("开始下载文件...")
+
+    def _sanitize_filename(self, filename):
+        """
+        过滤文件名中的非法字符，确保在各种操作系统中都能正确保存
+        
+        参数:
+        filename (str): 原始文件名
+        
+        返回:
+        str: 过滤后的文件名
+        """
+        # Windows系统中不允许的字符: \ / : * ? " < > | 以及换行符和控制字符
+        # 在所有操作系统中，换行符、制表符等控制字符也应该被过滤
+        illegal_chars = r'[\\/:*?"<>|\n\r\t]'
+        sanitized = re.sub(illegal_chars, '_', filename)
+        
+        # 过滤控制字符 (ASCII 0-31)
+        sanitized = re.sub(r'[\x00-\x1f]', '_', sanitized)
+        
+        # 去除首尾空格和控制字符
+        sanitized = sanitized.strip()
+        
+        # 替换连续的下划线或空格为单个下划线
+        sanitized = re.sub(r'[_\s]+', '_', sanitized)
+        
+        # 处理特殊情况：Windows保留文件名
+        reserved_names = ['CON', 'PRN', 'AUX', 'NUL'] + \
+                        ['COM%d' % i for i in range(1, 10)] + \
+                        ['LPT%d' % i for i in range(1, 10)]
+        
+        # 如果文件名匹配保留名称，则添加前缀
+        name_part = os.path.splitext(sanitized)[0].upper()
+        if name_part in reserved_names:
+            sanitized = '_' + sanitized
+        
+        # 限制文件名长度（Windows最大255字符）
+        dir_path, file_name = os.path.split(sanitized)
+        if len(file_name) > 200:  # 留一些空间给扩展名
+            name, ext = os.path.splitext(file_name)
+            file_name = name[:200-len(ext)] + ext
+            sanitized = os.path.join(dir_path, file_name)
+        
+        # 如果文件名为空，则使用默认名称
+        if not sanitized or sanitized == '.':
+            sanitized = 'unnamed_file'
+        
+        return sanitized
+
 
     ###############################运行功能相关###############################
 
@@ -890,6 +938,8 @@ class DownloadService():
                         cid = item['cid']
                         ctime = item['ctime']
                         
+                        title = self._sanitize_filename(title)    # 删除文件名中的非法字符
+
                         # print(f"最新集AID: {aid}")
                         # content = f"🧸 集CID: {cid}"
                         content = f"🧸 标题：{title}"

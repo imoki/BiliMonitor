@@ -1,0 +1,4 @@
+requirements.txt
+PySide6
+json5
+pyinstaller

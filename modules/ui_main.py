@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'main.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.1
+## Created by: Qt User Interface Compiler version 6.9.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -1038,9 +1038,9 @@ class Ui_MainWindow(object):
         self.pagesContainer.setStyleSheet(u"")
         self.pagesContainer.setFrameShape(QFrame.Shape.NoFrame)
         self.pagesContainer.setFrameShadow(QFrame.Shadow.Raised)
-        self.gridLayout_14 = QGridLayout(self.pagesContainer)
-        self.gridLayout_14.setObjectName(u"gridLayout_14")
-        self.gridLayout_14.setContentsMargins(10, 10, 10, 10)
+        self.gridLayout_10 = QGridLayout(self.pagesContainer)
+        self.gridLayout_10.setObjectName(u"gridLayout_10")
+        self.gridLayout_10.setContentsMargins(10, 10, 10, 10)
         self.stackedWidget = QStackedWidget(self.pagesContainer)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.stackedWidget.setMinimumSize(QSize(100, 30))
@@ -1148,43 +1148,43 @@ class Ui_MainWindow(object):
         self.tableWidget_download.setSizePolicy(sizePolicy3)
         palette = QPalette()
         brush = QBrush(QColor(221, 221, 221, 255))
-        brush.setStyle(Qt.SolidPattern)
-        palette.setBrush(QPalette.Active, QPalette.WindowText, brush)
+        brush.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, brush)
         brush1 = QBrush(QColor(0, 0, 0, 0))
-        brush1.setStyle(Qt.SolidPattern)
-        palette.setBrush(QPalette.Active, QPalette.Button, brush1)
-        palette.setBrush(QPalette.Active, QPalette.Text, brush)
-        palette.setBrush(QPalette.Active, QPalette.ButtonText, brush)
+        brush1.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush1)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, brush)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.ButtonText, brush)
         brush2 = QBrush(QColor(0, 0, 0, 255))
-        brush2.setStyle(Qt.NoBrush)
-        palette.setBrush(QPalette.Active, QPalette.Base, brush2)
-        palette.setBrush(QPalette.Active, QPalette.Window, brush1)
+        brush2.setStyle(Qt.BrushStyle.NoBrush)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Base, brush2)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Window, brush1)
         brush3 = QBrush(QColor(221, 221, 221, 128))
-        brush3.setStyle(Qt.SolidPattern)
+        brush3.setStyle(Qt.BrushStyle.SolidPattern)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Active, QPalette.PlaceholderText, brush3)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.PlaceholderText, brush3)
 #endif
-        palette.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
-        palette.setBrush(QPalette.Inactive, QPalette.Button, brush1)
-        palette.setBrush(QPalette.Inactive, QPalette.Text, brush)
-        palette.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.WindowText, brush)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Button, brush1)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Text, brush)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.ButtonText, brush)
         brush4 = QBrush(QColor(0, 0, 0, 255))
-        brush4.setStyle(Qt.NoBrush)
-        palette.setBrush(QPalette.Inactive, QPalette.Base, brush4)
-        palette.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        brush4.setStyle(Qt.BrushStyle.NoBrush)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Base, brush4)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush3)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.PlaceholderText, brush3)
 #endif
-        palette.setBrush(QPalette.Disabled, QPalette.WindowText, brush)
-        palette.setBrush(QPalette.Disabled, QPalette.Button, brush1)
-        palette.setBrush(QPalette.Disabled, QPalette.Text, brush)
-        palette.setBrush(QPalette.Disabled, QPalette.ButtonText, brush)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.WindowText, brush)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Button, brush1)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Text, brush)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.ButtonText, brush)
         brush5 = QBrush(QColor(0, 0, 0, 255))
-        brush5.setStyle(Qt.NoBrush)
-        palette.setBrush(QPalette.Disabled, QPalette.Base, brush5)
-        palette.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        brush5.setStyle(Qt.BrushStyle.NoBrush)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Base, brush5)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush3)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.PlaceholderText, brush3)
 #endif
         self.tableWidget_download.setPalette(palette)
         self.tableWidget_download.setFrameShape(QFrame.Shape.NoFrame)
@@ -1309,38 +1309,38 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.tableWidget_history.sizePolicy().hasHeightForWidth())
         self.tableWidget_history.setSizePolicy(sizePolicy3)
         palette1 = QPalette()
-        palette1.setBrush(QPalette.Active, QPalette.WindowText, brush)
-        palette1.setBrush(QPalette.Active, QPalette.Button, brush1)
-        palette1.setBrush(QPalette.Active, QPalette.Text, brush)
-        palette1.setBrush(QPalette.Active, QPalette.ButtonText, brush)
+        palette1.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, brush)
+        palette1.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush1)
+        palette1.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, brush)
+        palette1.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.ButtonText, brush)
         brush6 = QBrush(QColor(0, 0, 0, 255))
-        brush6.setStyle(Qt.NoBrush)
-        palette1.setBrush(QPalette.Active, QPalette.Base, brush6)
-        palette1.setBrush(QPalette.Active, QPalette.Window, brush1)
+        brush6.setStyle(Qt.BrushStyle.NoBrush)
+        palette1.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Base, brush6)
+        palette1.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette1.setBrush(QPalette.Active, QPalette.PlaceholderText, brush3)
+        palette1.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.PlaceholderText, brush3)
 #endif
-        palette1.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
-        palette1.setBrush(QPalette.Inactive, QPalette.Button, brush1)
-        palette1.setBrush(QPalette.Inactive, QPalette.Text, brush)
-        palette1.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
+        palette1.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.WindowText, brush)
+        palette1.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Button, brush1)
+        palette1.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Text, brush)
+        palette1.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.ButtonText, brush)
         brush7 = QBrush(QColor(0, 0, 0, 255))
-        brush7.setStyle(Qt.NoBrush)
-        palette1.setBrush(QPalette.Inactive, QPalette.Base, brush7)
-        palette1.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        brush7.setStyle(Qt.BrushStyle.NoBrush)
+        palette1.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Base, brush7)
+        palette1.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette1.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush3)
+        palette1.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.PlaceholderText, brush3)
 #endif
-        palette1.setBrush(QPalette.Disabled, QPalette.WindowText, brush)
-        palette1.setBrush(QPalette.Disabled, QPalette.Button, brush1)
-        palette1.setBrush(QPalette.Disabled, QPalette.Text, brush)
-        palette1.setBrush(QPalette.Disabled, QPalette.ButtonText, brush)
+        palette1.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.WindowText, brush)
+        palette1.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Button, brush1)
+        palette1.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Text, brush)
+        palette1.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.ButtonText, brush)
         brush8 = QBrush(QColor(0, 0, 0, 255))
-        brush8.setStyle(Qt.NoBrush)
-        palette1.setBrush(QPalette.Disabled, QPalette.Base, brush8)
-        palette1.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        brush8.setStyle(Qt.BrushStyle.NoBrush)
+        palette1.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Base, brush8)
+        palette1.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette1.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush3)
+        palette1.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.PlaceholderText, brush3)
 #endif
         self.tableWidget_history.setPalette(palette1)
         self.tableWidget_history.setFrameShape(QFrame.Shape.NoFrame)
@@ -1944,7 +1944,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 339, 218))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 218, 218))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -2078,38 +2078,38 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
         self.tableWidget.setSizePolicy(sizePolicy3)
         palette2 = QPalette()
-        palette2.setBrush(QPalette.Active, QPalette.WindowText, brush)
-        palette2.setBrush(QPalette.Active, QPalette.Button, brush1)
-        palette2.setBrush(QPalette.Active, QPalette.Text, brush)
-        palette2.setBrush(QPalette.Active, QPalette.ButtonText, brush)
+        palette2.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, brush)
+        palette2.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush1)
+        palette2.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, brush)
+        palette2.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.ButtonText, brush)
         brush9 = QBrush(QColor(0, 0, 0, 255))
-        brush9.setStyle(Qt.NoBrush)
-        palette2.setBrush(QPalette.Active, QPalette.Base, brush9)
-        palette2.setBrush(QPalette.Active, QPalette.Window, brush1)
+        brush9.setStyle(Qt.BrushStyle.NoBrush)
+        palette2.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Base, brush9)
+        palette2.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette.Active, QPalette.PlaceholderText, brush)
+        palette2.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.PlaceholderText, brush)
 #endif
-        palette2.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
-        palette2.setBrush(QPalette.Inactive, QPalette.Button, brush1)
-        palette2.setBrush(QPalette.Inactive, QPalette.Text, brush)
-        palette2.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
+        palette2.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.WindowText, brush)
+        palette2.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Button, brush1)
+        palette2.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Text, brush)
+        palette2.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.ButtonText, brush)
         brush10 = QBrush(QColor(0, 0, 0, 255))
-        brush10.setStyle(Qt.NoBrush)
-        palette2.setBrush(QPalette.Inactive, QPalette.Base, brush10)
-        palette2.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        brush10.setStyle(Qt.BrushStyle.NoBrush)
+        palette2.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Base, brush10)
+        palette2.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush)
+        palette2.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.PlaceholderText, brush)
 #endif
-        palette2.setBrush(QPalette.Disabled, QPalette.WindowText, brush)
-        palette2.setBrush(QPalette.Disabled, QPalette.Button, brush1)
-        palette2.setBrush(QPalette.Disabled, QPalette.Text, brush)
-        palette2.setBrush(QPalette.Disabled, QPalette.ButtonText, brush)
+        palette2.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.WindowText, brush)
+        palette2.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Button, brush1)
+        palette2.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Text, brush)
+        palette2.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.ButtonText, brush)
         brush11 = QBrush(QColor(0, 0, 0, 255))
-        brush11.setStyle(Qt.NoBrush)
-        palette2.setBrush(QPalette.Disabled, QPalette.Base, brush11)
-        palette2.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        brush11.setStyle(Qt.BrushStyle.NoBrush)
+        palette2.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Base, brush11)
+        palette2.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush)
+        palette2.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.PlaceholderText, brush)
 #endif
         self.tableWidget.setPalette(palette2)
         self.tableWidget.setFrameShape(QFrame.Shape.NoFrame)
@@ -2286,38 +2286,38 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.tableWidget_cron.sizePolicy().hasHeightForWidth())
         self.tableWidget_cron.setSizePolicy(sizePolicy3)
         palette3 = QPalette()
-        palette3.setBrush(QPalette.Active, QPalette.WindowText, brush)
-        palette3.setBrush(QPalette.Active, QPalette.Button, brush1)
-        palette3.setBrush(QPalette.Active, QPalette.Text, brush)
-        palette3.setBrush(QPalette.Active, QPalette.ButtonText, brush)
+        palette3.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, brush)
+        palette3.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush1)
+        palette3.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, brush)
+        palette3.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.ButtonText, brush)
         brush12 = QBrush(QColor(0, 0, 0, 255))
-        brush12.setStyle(Qt.NoBrush)
-        palette3.setBrush(QPalette.Active, QPalette.Base, brush12)
-        palette3.setBrush(QPalette.Active, QPalette.Window, brush1)
+        brush12.setStyle(Qt.BrushStyle.NoBrush)
+        palette3.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Base, brush12)
+        palette3.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette3.setBrush(QPalette.Active, QPalette.PlaceholderText, brush3)
+        palette3.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.PlaceholderText, brush3)
 #endif
-        palette3.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
-        palette3.setBrush(QPalette.Inactive, QPalette.Button, brush1)
-        palette3.setBrush(QPalette.Inactive, QPalette.Text, brush)
-        palette3.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
+        palette3.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.WindowText, brush)
+        palette3.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Button, brush1)
+        palette3.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Text, brush)
+        palette3.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.ButtonText, brush)
         brush13 = QBrush(QColor(0, 0, 0, 255))
-        brush13.setStyle(Qt.NoBrush)
-        palette3.setBrush(QPalette.Inactive, QPalette.Base, brush13)
-        palette3.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        brush13.setStyle(Qt.BrushStyle.NoBrush)
+        palette3.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Base, brush13)
+        palette3.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette3.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush3)
+        palette3.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.PlaceholderText, brush3)
 #endif
-        palette3.setBrush(QPalette.Disabled, QPalette.WindowText, brush)
-        palette3.setBrush(QPalette.Disabled, QPalette.Button, brush1)
-        palette3.setBrush(QPalette.Disabled, QPalette.Text, brush)
-        palette3.setBrush(QPalette.Disabled, QPalette.ButtonText, brush)
+        palette3.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.WindowText, brush)
+        palette3.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Button, brush1)
+        palette3.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Text, brush)
+        palette3.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.ButtonText, brush)
         brush14 = QBrush(QColor(0, 0, 0, 255))
-        brush14.setStyle(Qt.NoBrush)
-        palette3.setBrush(QPalette.Disabled, QPalette.Base, brush14)
-        palette3.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        brush14.setStyle(Qt.BrushStyle.NoBrush)
+        palette3.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Base, brush14)
+        palette3.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette3.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush3)
+        palette3.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.PlaceholderText, brush3)
 #endif
         self.tableWidget_cron.setPalette(palette3)
         self.tableWidget_cron.setFrameShape(QFrame.Shape.NoFrame)
@@ -2372,46 +2372,64 @@ class Ui_MainWindow(object):
         self.page_list.setObjectName(u"page_list")
         self.gridLayout_6 = QGridLayout(self.page_list)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.labelVersion_setting_4 = QLabel(self.page_list)
-        self.labelVersion_setting_4.setObjectName(u"labelVersion_setting_4")
-        self.labelVersion_setting_4.setMinimumSize(QSize(100, 0))
-        self.labelVersion_setting_4.setMaximumSize(QSize(100, 16777215))
-        self.labelVersion_setting_4.setStyleSheet(u"color: rgb(113, 126, 149);")
-        self.labelVersion_setting_4.setLineWidth(1)
-        self.labelVersion_setting_4.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.horizontalSpacer_71 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.gridLayout_6.addWidget(self.labelVersion_setting_4, 0, 0, 1, 1)
+        self.gridLayout_6.addItem(self.horizontalSpacer_71, 5, 13, 1, 1)
 
-        self.horizontalSpacer_2 = QSpacerItem(121, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_54 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.gridLayout_6.addItem(self.horizontalSpacer_2, 0, 1, 1, 1)
+        self.gridLayout_6.addItem(self.horizontalSpacer_54, 1, 3, 1, 1)
+
+        self.horizontalSpacer_51 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_51, 1, 7, 1, 1)
 
         self.horizontalSpacer_56 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.gridLayout_6.addItem(self.horizontalSpacer_56, 0, 2, 1, 1)
+        self.gridLayout_6.addItem(self.horizontalSpacer_56, 5, 4, 1, 1)
 
-        self.horizontalSpacer_51 = QSpacerItem(121, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_55 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.gridLayout_6.addItem(self.horizontalSpacer_51, 0, 3, 1, 1)
+        self.gridLayout_6.addItem(self.horizontalSpacer_55, 5, 3, 1, 1)
 
-        self.horizontalSpacer_52 = QSpacerItem(121, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.pushButton_list_2 = QPushButton(self.page_list)
+        self.pushButton_list_2.setObjectName(u"pushButton_list_2")
+        self.pushButton_list_2.setMinimumSize(QSize(100, 30))
+        self.pushButton_list_2.setMaximumSize(QSize(100, 30))
 
-        self.gridLayout_6.addItem(self.horizontalSpacer_52, 0, 4, 1, 1)
+        self.gridLayout_6.addWidget(self.pushButton_list_2, 1, 12, 1, 1)
+
+        self.horizontalSpacer_82 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_82, 1, 9, 1, 1)
+
+        self.horizontalSpacer_61 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_61, 5, 5, 1, 1)
+
+        self.horizontalSpacer_58 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_58, 1, 6, 1, 1)
+
+        self.horizontalSpacer_63 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_63, 5, 14, 1, 1)
+
+        self.horizontalSpacer_60 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_60, 5, 1, 1, 1)
+
+        self.horizontalSpacer_81 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_81, 5, 6, 1, 1)
 
         self.horizontalSpacer_57 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.gridLayout_6.addItem(self.horizontalSpacer_57, 0, 6, 1, 1)
+        self.gridLayout_6.addItem(self.horizontalSpacer_57, 1, 5, 1, 1)
 
-        self.pushButton_list_1 = QPushButton(self.page_list)
-        self.pushButton_list_1.setObjectName(u"pushButton_list_1")
-        self.pushButton_list_1.setMinimumSize(QSize(100, 30))
-        self.pushButton_list_1.setMaximumSize(QSize(100, 30))
+        self.horizontalSpacer_78 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.gridLayout_6.addWidget(self.pushButton_list_1, 0, 7, 1, 1)
-
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.gridLayout_6.addItem(self.horizontalSpacer, 0, 8, 1, 1)
+        self.gridLayout_6.addItem(self.horizontalSpacer_78, 5, 12, 1, 1)
 
         self.tableWidget_list = QTableWidget(self.page_list)
         if (self.tableWidget_list.columnCount() < 3):
@@ -2465,38 +2483,38 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.tableWidget_list.sizePolicy().hasHeightForWidth())
         self.tableWidget_list.setSizePolicy(sizePolicy3)
         palette4 = QPalette()
-        palette4.setBrush(QPalette.Active, QPalette.WindowText, brush)
-        palette4.setBrush(QPalette.Active, QPalette.Button, brush1)
-        palette4.setBrush(QPalette.Active, QPalette.Text, brush)
-        palette4.setBrush(QPalette.Active, QPalette.ButtonText, brush)
+        palette4.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, brush)
+        palette4.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush1)
+        palette4.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, brush)
+        palette4.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.ButtonText, brush)
         brush15 = QBrush(QColor(0, 0, 0, 255))
-        brush15.setStyle(Qt.NoBrush)
-        palette4.setBrush(QPalette.Active, QPalette.Base, brush15)
-        palette4.setBrush(QPalette.Active, QPalette.Window, brush1)
+        brush15.setStyle(Qt.BrushStyle.NoBrush)
+        palette4.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Base, brush15)
+        palette4.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette4.setBrush(QPalette.Active, QPalette.PlaceholderText, brush)
+        palette4.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.PlaceholderText, brush)
 #endif
-        palette4.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
-        palette4.setBrush(QPalette.Inactive, QPalette.Button, brush1)
-        palette4.setBrush(QPalette.Inactive, QPalette.Text, brush)
-        palette4.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
+        palette4.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.WindowText, brush)
+        palette4.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Button, brush1)
+        palette4.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Text, brush)
+        palette4.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.ButtonText, brush)
         brush16 = QBrush(QColor(0, 0, 0, 255))
-        brush16.setStyle(Qt.NoBrush)
-        palette4.setBrush(QPalette.Inactive, QPalette.Base, brush16)
-        palette4.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        brush16.setStyle(Qt.BrushStyle.NoBrush)
+        palette4.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Base, brush16)
+        palette4.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette4.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush)
+        palette4.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.PlaceholderText, brush)
 #endif
-        palette4.setBrush(QPalette.Disabled, QPalette.WindowText, brush)
-        palette4.setBrush(QPalette.Disabled, QPalette.Button, brush1)
-        palette4.setBrush(QPalette.Disabled, QPalette.Text, brush)
-        palette4.setBrush(QPalette.Disabled, QPalette.ButtonText, brush)
+        palette4.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.WindowText, brush)
+        palette4.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Button, brush1)
+        palette4.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Text, brush)
+        palette4.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.ButtonText, brush)
         brush17 = QBrush(QColor(0, 0, 0, 255))
-        brush17.setStyle(Qt.NoBrush)
-        palette4.setBrush(QPalette.Disabled, QPalette.Base, brush17)
-        palette4.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        brush17.setStyle(Qt.BrushStyle.NoBrush)
+        palette4.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Base, brush17)
+        palette4.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette4.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush)
+        palette4.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.PlaceholderText, brush)
 #endif
         self.tableWidget_list.setPalette(palette4)
         self.tableWidget_list.setFrameShape(QFrame.Shape.NoFrame)
@@ -2519,50 +2537,69 @@ class Ui_MainWindow(object):
         self.tableWidget_list.verticalHeader().setHighlightSections(False)
         self.tableWidget_list.verticalHeader().setStretchLastSection(True)
 
-        self.gridLayout_6.addWidget(self.tableWidget_list, 1, 0, 1, 9)
+        self.gridLayout_6.addWidget(self.tableWidget_list, 4, 0, 1, 16)
 
         self.horizontalSpacer_53 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.gridLayout_6.addItem(self.horizontalSpacer_53, 0, 5, 1, 1)
+        self.gridLayout_6.addItem(self.horizontalSpacer_53, 1, 10, 1, 1)
+
+        self.horizontalSpacer_79 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_79, 5, 10, 1, 1)
+
+        self.horizontalSpacer_59 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_59, 5, 2, 1, 1)
+
+        self.pushButton_list_1 = QPushButton(self.page_list)
+        self.pushButton_list_1.setObjectName(u"pushButton_list_1")
+        self.pushButton_list_1.setMinimumSize(QSize(100, 30))
+        self.pushButton_list_1.setMaximumSize(QSize(100, 30))
+
+        self.gridLayout_6.addWidget(self.pushButton_list_1, 1, 2, 1, 1)
+
+        self.horizontalSpacer_2 = QSpacerItem(121, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_2, 1, 1, 1, 1)
+
+        self.horizontalSpacer_80 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_80, 1, 4, 1, 1)
 
         self.pushButton_next_2 = QPushButton(self.page_list)
         self.pushButton_next_2.setObjectName(u"pushButton_next_2")
         self.pushButton_next_2.setMinimumSize(QSize(100, 30))
         self.pushButton_next_2.setMaximumSize(QSize(100, 30))
 
-        self.gridLayout_6.addWidget(self.pushButton_next_2, 2, 4, 1, 1)
-
-        self.horizontalSpacer_54 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.gridLayout_6.addItem(self.horizontalSpacer_54, 2, 3, 1, 1)
-
-        self.horizontalSpacer_55 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.gridLayout_6.addItem(self.horizontalSpacer_55, 2, 2, 1, 1)
-
-        self.horizontalSpacer_58 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.gridLayout_6.addItem(self.horizontalSpacer_58, 2, 1, 1, 1)
-
-        self.horizontalSpacer_59 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.gridLayout_6.addItem(self.horizontalSpacer_59, 2, 0, 1, 1)
-
-        self.horizontalSpacer_60 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.gridLayout_6.addItem(self.horizontalSpacer_60, 2, 5, 1, 1)
-
-        self.horizontalSpacer_61 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.gridLayout_6.addItem(self.horizontalSpacer_61, 2, 6, 1, 1)
+        self.gridLayout_6.addWidget(self.pushButton_next_2, 5, 7, 1, 1)
 
         self.horizontalSpacer_62 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.gridLayout_6.addItem(self.horizontalSpacer_62, 2, 7, 1, 1)
+        self.gridLayout_6.addItem(self.horizontalSpacer_62, 5, 15, 1, 1)
 
-        self.horizontalSpacer_63 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_52 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.gridLayout_6.addItem(self.horizontalSpacer_63, 2, 8, 1, 1)
+        self.gridLayout_6.addItem(self.horizontalSpacer_52, 5, 9, 1, 1)
+
+        self.horizontalSpacer_84 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_84, 5, 8, 1, 1)
+
+        self.horizontalSpacer_85 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_85, 1, 8, 1, 1)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer, 1, 13, 1, 1)
+
+        self.horizontalSpacer_83 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_83, 1, 14, 1, 1)
+
+        self.horizontalSpacer_86 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_6.addItem(self.horizontalSpacer_86, 1, 15, 1, 1)
 
         self.stackedWidget.addWidget(self.page_list)
         self.page_cookie_stackedWidget = QWidget()
@@ -2608,38 +2645,38 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.tableWidget_cookie.sizePolicy().hasHeightForWidth())
         self.tableWidget_cookie.setSizePolicy(sizePolicy3)
         palette5 = QPalette()
-        palette5.setBrush(QPalette.Active, QPalette.WindowText, brush)
-        palette5.setBrush(QPalette.Active, QPalette.Button, brush1)
-        palette5.setBrush(QPalette.Active, QPalette.Text, brush)
-        palette5.setBrush(QPalette.Active, QPalette.ButtonText, brush)
+        palette5.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, brush)
+        palette5.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush1)
+        palette5.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, brush)
+        palette5.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.ButtonText, brush)
         brush18 = QBrush(QColor(0, 0, 0, 255))
-        brush18.setStyle(Qt.NoBrush)
-        palette5.setBrush(QPalette.Active, QPalette.Base, brush18)
-        palette5.setBrush(QPalette.Active, QPalette.Window, brush1)
+        brush18.setStyle(Qt.BrushStyle.NoBrush)
+        palette5.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Base, brush18)
+        palette5.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette5.setBrush(QPalette.Active, QPalette.PlaceholderText, brush3)
+        palette5.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.PlaceholderText, brush3)
 #endif
-        palette5.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
-        palette5.setBrush(QPalette.Inactive, QPalette.Button, brush1)
-        palette5.setBrush(QPalette.Inactive, QPalette.Text, brush)
-        palette5.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
+        palette5.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.WindowText, brush)
+        palette5.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Button, brush1)
+        palette5.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Text, brush)
+        palette5.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.ButtonText, brush)
         brush19 = QBrush(QColor(0, 0, 0, 255))
-        brush19.setStyle(Qt.NoBrush)
-        palette5.setBrush(QPalette.Inactive, QPalette.Base, brush19)
-        palette5.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+        brush19.setStyle(Qt.BrushStyle.NoBrush)
+        palette5.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Base, brush19)
+        palette5.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette5.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush3)
+        palette5.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.PlaceholderText, brush3)
 #endif
-        palette5.setBrush(QPalette.Disabled, QPalette.WindowText, brush)
-        palette5.setBrush(QPalette.Disabled, QPalette.Button, brush1)
-        palette5.setBrush(QPalette.Disabled, QPalette.Text, brush)
-        palette5.setBrush(QPalette.Disabled, QPalette.ButtonText, brush)
+        palette5.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.WindowText, brush)
+        palette5.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Button, brush1)
+        palette5.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Text, brush)
+        palette5.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.ButtonText, brush)
         brush20 = QBrush(QColor(0, 0, 0, 255))
-        brush20.setStyle(Qt.NoBrush)
-        palette5.setBrush(QPalette.Disabled, QPalette.Base, brush20)
-        palette5.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+        brush20.setStyle(Qt.BrushStyle.NoBrush)
+        palette5.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Base, brush20)
+        palette5.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette5.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush3)
+        palette5.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.PlaceholderText, brush3)
 #endif
         self.tableWidget_cookie.setPalette(palette5)
         self.tableWidget_cookie.setFrameShape(QFrame.Shape.NoFrame)
@@ -2812,7 +2849,7 @@ class Ui_MainWindow(object):
 
         self.stackedWidget.addWidget(self.page_home)
 
-        self.gridLayout_14.addWidget(self.stackedWidget, 0, 0, 1, 1)
+        self.gridLayout_10.addWidget(self.stackedWidget, 0, 0, 1, 1)
 
 
         self.horizontalLayout_4.addWidget(self.pagesContainer)
@@ -2952,7 +2989,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(8)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -3335,8 +3372,7 @@ class Ui_MainWindow(object):
 
         self.pushButton_cron_3.setText(QCoreApplication.translate("MainWindow", u"\u7acb\u5373\u8fd0\u884c", None))
         self.pushButton_cron_2.setText(QCoreApplication.translate("MainWindow", u"\u5b8c\u6210", None))
-        self.labelVersion_setting_4.setText(QCoreApplication.translate("MainWindow", u"UP\u5217\u8868", None))
-        self.pushButton_list_1.setText(QCoreApplication.translate("MainWindow", u"\u6dfb\u52a0", None))
+        self.pushButton_list_2.setText(QCoreApplication.translate("MainWindow", u"\u8865\u5168\u4fe1\u606f", None))
         ___qtablewidgetitem75 = self.tableWidget_list.horizontalHeaderItem(0)
         ___qtablewidgetitem75.setText(QCoreApplication.translate("MainWindow", u"0", None));
         ___qtablewidgetitem76 = self.tableWidget_list.horizontalHeaderItem(1)
@@ -3377,13 +3413,14 @@ class Ui_MainWindow(object):
         __sortingEnabled4 = self.tableWidget_list.isSortingEnabled()
         self.tableWidget_list.setSortingEnabled(False)
         ___qtablewidgetitem93 = self.tableWidget_list.item(0, 0)
-        ___qtablewidgetitem93.setText(QCoreApplication.translate("MainWindow", u"ID", None));
+        ___qtablewidgetitem93.setText(QCoreApplication.translate("MainWindow", u"UP\u7a7a\u95f4ID", None));
         ___qtablewidgetitem94 = self.tableWidget_list.item(0, 1)
         ___qtablewidgetitem94.setText(QCoreApplication.translate("MainWindow", u"\u540d\u79f0", None));
         ___qtablewidgetitem95 = self.tableWidget_list.item(0, 2)
         ___qtablewidgetitem95.setText(QCoreApplication.translate("MainWindow", u"\u5907\u6ce8", None));
         self.tableWidget_list.setSortingEnabled(__sortingEnabled4)
 
+        self.pushButton_list_1.setText(QCoreApplication.translate("MainWindow", u"\u6dfb\u52a0", None))
         self.pushButton_next_2.setText(QCoreApplication.translate("MainWindow", u"\u4e0b\u4e00\u6b65", None))
         ___qtablewidgetitem96 = self.tableWidget_cookie.horizontalHeaderItem(0)
         ___qtablewidgetitem96.setText(QCoreApplication.translate("MainWindow", u"0", None));
@@ -3432,6 +3469,6 @@ class Ui_MainWindow(object):
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
         self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
         self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"By: \u65e0\u76d0\u4e03", None))
-        self.version.setText(QCoreApplication.translate("MainWindow", u"v5.6.0", None))
+        self.version.setText(QCoreApplication.translate("MainWindow", u"v5.7.0", None))
     # retranslateUi
 

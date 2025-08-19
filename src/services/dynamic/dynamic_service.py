@@ -14,7 +14,7 @@ import os
 from urllib.parse import quote
 import random
 import math
-import qrcode
+# import qrcode
 import threading
 import gzip
 from io import BytesIO
@@ -36,10 +36,16 @@ class DynamicService():
         self.apiinfourl = "https://api.bilibili.com/x/web-interface/view"    # 获取媒体信息，aid,cid
         self.apidownurl = "https://api.bilibili.com/x/player/playurl"    # 获取下载地址
         self.apidynamicurl = "https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?host_mid="  # 获取动态
+        self.apiupinfo = "https://api.bilibili.com/x/web-interface/card"    # 获取up信息
+        self.apiheaders = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+            'Referer': 'https://www.bilibili.com/'
+        }
         self.message = "【bilibili视频下载】\n"    # 待发送该消息
         self.downMaxCount = 3    # 下载失败最大重试次数
         self.urlMaxCount = 3    # 获取下载地址最大重试次数
         self.recentCount = 5    # 动态获取最近几条数据
+
     # 加载配置表格
     def load_table(self):
         tableView = TableView(parent = self.parent, table = self.table)
@@ -284,7 +290,158 @@ class DynamicService():
 
         self.prompt_view.prompt(text="删除成功", type="success")
 
-    
+
+    def _sanitize_filename(self, filename):
+        """
+        过滤文件名中的非法字符，确保在各种操作系统中都能正确保存
+        
+        参数:
+        filename (str): 原始文件名
+        
+        返回:
+        str: 过滤后的文件名
+        """
+        # Windows系统中不允许的字符: \ / : * ? " < > | 以及换行符和控制字符
+        # 在所有操作系统中，换行符、制表符等控制字符也应该被过滤
+        illegal_chars = r'[\\/:*?"<>|\n\r\t]'
+        sanitized = re.sub(illegal_chars, '_', filename)
+        
+        # 过滤控制字符 (ASCII 0-31)
+        sanitized = re.sub(r'[\x00-\x1f]', '_', sanitized)
+        
+        # 去除首尾空格和控制字符
+        sanitized = sanitized.strip()
+        
+        # 替换连续的下划线或空格为单个下划线
+        sanitized = re.sub(r'[_\s]+', '_', sanitized)
+        
+        # 处理特殊情况：Windows保留文件名
+        reserved_names = ['CON', 'PRN', 'AUX', 'NUL'] + \
+                        ['COM%d' % i for i in range(1, 10)] + \
+                        ['LPT%d' % i for i in range(1, 10)]
+        
+        # 如果文件名匹配保留名称，则添加前缀
+        name_part = os.path.splitext(sanitized)[0].upper()
+        if name_part in reserved_names:
+            sanitized = '_' + sanitized
+        
+        # 限制文件名长度（Windows最大255字符）
+        dir_path, file_name = os.path.split(sanitized)
+        if len(file_name) > 200:  # 留一些空间给扩展名
+            name, ext = os.path.splitext(file_name)
+            file_name = name[:200-len(ext)] + ext
+            sanitized = os.path.join(dir_path, file_name)
+        
+        # 如果文件名为空，则使用默认名称
+        if not sanitized or sanitized == '.':
+            sanitized = 'unnamed_file'
+        
+        return sanitized
+
+    # 补全信息按钮，补全名称和备注
+    def table_fill_info(self):
+        """
+        补全UP主信息，自动获取UP主名称并填充到表格中
+        """
+        
+        success_count = 0
+        fail_count = 0
+
+        items = self.configManager.read_config(self.key)
+        # print(items)
+
+        array_data = []
+
+        for item in items:
+            # 获取ID列的内容
+            uid = item['uid'].strip()
+            if not uid:
+                continue
+                
+            # 检查名称是否已存在
+            name = item['name'].strip()
+            if name:
+                # 如果名称已经存在，跳过
+                array_data.append(item)
+                continue
+            
+            # print(item)
+            try:
+                # 调用B站API获取UP主信息
+                params = {'mid': uid}
+                response = requests.get(url = self.apiupinfo, headers=self.apiheaders, params=params, timeout=10)
+                response.raise_for_status()
+                data = response.json()
+
+                content = "🎮️ 开始获取：" + uid + ""
+                self.realTimeLogService.append_log(content)
+
+                if data.get('code') == 0 and data.get('data') and data['data'].get('card'):
+                    card_info = data['data']['card']
+                    name = card_info.get('name', '')
+                    name = self._sanitize_filename(name)
+                    # print(name)
+
+                    content = "😶 昵称: " + name
+                    self.realTimeLogService.append_log(content)
+                    
+                    # 更新表格中的名称列
+                    if name:
+                        item["name"] = name
+                        notes = ""
+
+                        # 确保item包含notes字段
+                        if "notes" not in item:
+                            item["notes"] = ""
+                        else:
+                            notes = item["notes"].strip()
+                        
+                        if not notes:
+                            sign = card_info.get('sign', '')[:50]  # 限制备注长度
+                            sign = self._sanitize_filename(sign)
+                            if sign:
+                                content = "⌨️ 备注: " + sign
+                                self.realTimeLogService.append_log(content)
+                                item["notes"] = sign
+                        array_data.append(item)
+                        success_count += 1
+                else:
+                    fail_count += 1
+                    content = f"❌ 无法获取UP主 {uid} 的信息"
+                    self.realTimeLogService.append_log(content)
+                    
+            except requests.exceptions.RequestException as e:
+                fail_count += 1
+                content = f"❗网络请求错误: {str(e)}"
+                self.realTimeLogService.append_log(content)
+                continue
+            except Exception as e:
+                fail_count += 1
+                content = f"❌ 补全UP主 {uid} 信息时出错: {str(e)}"
+                self.realTimeLogService.append_log(content)
+
+                continue
+                
+            # 添加延迟避免请求过于频繁，随机延迟5-10秒
+            time.sleep(random.uniform(3, 5))
+
+        # 显示操作结果
+        if fail_count > 0:
+            content = f"❗失败 {fail_count} 个UP主信息补全"
+            self.realTimeLogService.append_log(content)
+
+        if success_count > 0:
+            content = f"🥳 成功补全 {success_count} 个UP主信息"
+            self.realTimeLogService.append_log(content)
+        
+        # 更新数据
+        key = "uids"
+        self.configManager.update_config(key, array_data)
+        self.load_table()
+
+    # 清空信息按钮，清空名称和备注
+    # def table_clear_info():
+
     # 添加id（已废弃）
     def add_id(self):
         value = self.parent.ui.textEdit_home_2.toPlainText()
@@ -446,13 +603,17 @@ class DynamicService():
         #     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
         # }
 
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36",
-            "Referer": "https://www.bilibili.com"
-        }
+        # headers = {
+        #     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36",
+        #     "Referer": "https://www.bilibili.com"
+        # }
+        
+        # title = self._sanitize_filename(title)
+        # print(title)
+        # save_path = os.path.join(path, title + ".mp4")
 
         try:
-            response = requests.get(download_url, headers=headers, stream=True)
+            response = requests.get(download_url, headers=self.apiheaders, stream=True)
             if response.status_code == 200:
                 with open(save_path, 'wb') as file:
                     for chunk in response.iter_content(chunk_size=1024):
@@ -797,7 +958,6 @@ class DynamicService():
         # print(content)
         self.message += content
 
-
     # 下载视频定时任务
     def run_task_down(self, realTimeLogService, logService, cron_name):
         self.realTimeLogService = realTimeLogService
@@ -806,141 +966,156 @@ class DynamicService():
 
         content = f"😶‍🌫️ 开始运行 {cron_name}"
         self.realTimeLogService.append_log(content)
-        """
-        主函数
-        """
-        # self.logo()
-        # test()
-        
-        bvidlist = self.getdynamicbvid()
-        # 写入bvid到配置文件中
-        bvidlist = self.checkbvid(bvidlist)    
-        self.writebvid(bvidlist)
-        # print(bvidlist)
-        
-        # 遍历bvidlist
-        for bvid in bvidlist:
-            content = "🎮️ 开始获取：" + bvid + ""
-            self.realTimeLogService.append_log(content)
-            self.writemessage(content)
 
-            # code, result = get_latest_episode_id(bvid)
-            code, result = self.getaidcid(bvid)
-            # print(code)
-            # print(result)
-            # 等待几秒
-            time.sleep(3)
-            # 判断result数组长度是否为0
-            if code == 0:
-                if len(result) != 0:
-                    # content = "✨ 总共检索到" + str(len(result)) + "个视频，开始处理"
-                    # self.realTimeLogService.append_log(content)
-                    # writemessage(content)
-                    # 便利result数组
-                    for item in result:
-                        title = item['title']
-                        aid = item['aid']
-                        cid = item['cid']
-                        ctime = item['ctime']
-                        
-                        # print(f"最新集AID: {aid}")
-                        # content = f"🧸 集CID: {cid}"
-                        content = f"🧸 标题：{title}"
-                        # print(content)
-                        self.realTimeLogService.append_log(content)
-                        # writemessage(content)
-                        # print(content)
-                        # print(f"最新集时间: {ctime}")
-
-                        # 检查是否已经下载过了
-                        if self.checkcid(cid):
-                            content = "🔮 已经下载过了"
-                            # writemessage(content)
-                            self.realTimeLogService.append_log(content)
-                            # print(content)
-                        else:
-                            # 如果没下载则进行下载
-                            code, downurl = self.getdownurl(aid, cid)
-                            # 如果code==0则获取成功，否则尝试获取三次
-                            if code == 0:
-                                # content = f"🎯 下载地址: {downurl}"
-                                # self.realTimeLogService.append_log(content)
-                                time.sleep(3)
-                                # 根据下载地址下载文件
-                                name = title
-                                # name = str(self.get_current_date_formatted()) + "_" + str(cid) # "今天时间 + cid"
-                                path = self.configManager.video_path + name +  ".mp4"
-                                content = f"💾 开始下载，保存路径：{path}"
-                                self.realTimeLogService.append_log(content)
-                                downflag = 0
-                                downflag = self.download_file(downurl, path)
-                                # 如果downflag 为1则下载成功，否则尝试下载三次
-                                if downflag == 0:
-                                    content = "❗ 下载失败，尝试下载三次"
-                                    self.realTimeLogService.append_log(content)
-                                    for i in range(int(self.downMaxCount)):
-                                        content = f"❗ 尝试下载第{i+1}次"
-                                        self.realTimeLogService.append_log(content)
-                                        downflag = self.download_file(downurl, path)
-                                        if downflag == 1:
-                                            content = "✅ 下载成功"
-                                            self.realTimeLogService.append_log(content)
-                                            break
-                                        # else:
-                                        #     print("❌ 下载失败，尝试重新下载")
-                                        #     time.sleep(3)
-
-                                time.sleep(10)
-                            else:
-                                # content = "❌ 获取下载地址失败\n"
-                                # writemessage(content)
-                                content = f"❗ 获取下载地址失败，尝试获取{self.urlMaxCount}次"
-                                self.realTimeLogService.append_log(content)
-                                for i in range(int(self.urlMaxCount)):
-                                    content = f"❗ 尝试获取下载地址第{i+1}次"
-                                    self.realTimeLogService.append_log(content)
-                                    code, downurl = self.getdownurl(aid, cid)
-                                    if code == 0:
-                                        # content = f"🎯 下载地址: {downurl}"
-                                        # 根据下载地址下载文件
-                                        name = title
-                                        # name = str(AppFunctions.get_current_date_formatted()) + "_" + str(cid) # "今天时间 + cid"
-                                        path = self.configManager.video_path + name +  ".mp4"
-                                        content = f"💾 开始进行下载，保存路径: {path}"
-                                        self.realTimeLogService.append_log(content)
-                                        downflag = 0
-                                        downflag = self.download_file(downurl, path)
-                                        # 如果downflag 为1则下载成功，否则尝试下载三次
-                                        if downflag == 0:
-                                            content = f"❗ 尝试下载{self.downMaxCount}次"
-                                            self.realTimeLogService.append_log(content)
-                                            for i in range(int(self.downMaxCount)):
-                                                content = f"❗ 尝试下载第{i+1}次"
-                                                self.realTimeLogService.append_log(content)
-                                                downflag = self.download_file(downurl, path)
-                                                if downflag == 1:
-                                                    content = "✅ 下载成功"
-                                                    self.realTimeLogService.append_log(content)
-                                                    break
-                                                # else:
-                                                #     print("❌ 下载失败，尝试重新下载")
-                                                #     time.sleep(3)
-
-                                        time.sleep(10)
-                                        break
-                                    else:
-                                        # print("❌ 获取下载地址失败，尝试重新获取")
-                                        time.sleep(3)
-
-                else:
-                    content = "🎈 无视频"
-                    self.realTimeLogService.append_log(content)
-                    self.writemessage(content)
-            else:
-                content = "❌ 获取失败"
+        if cron_name == "UP信息补全":
+            self.table_fill_info()
+        else:
+            """
+            主函数
+            """
+            # self.logo()
+            # test()
+            
+            bvidlist = self.getdynamicbvid()
+            # 写入bvid到配置文件中
+            bvidlist = self.checkbvid(bvidlist)    
+            self.writebvid(bvidlist)
+            # print(bvidlist)
+            
+            # 遍历bvidlist
+            for bvid in bvidlist:
+                content = "🎮️ 开始获取：" + bvid + ""
                 self.realTimeLogService.append_log(content)
                 self.writemessage(content)
-            time.sleep(10)
+
+                # code, result = get_latest_episode_id(bvid)
+                code, result = self.getaidcid(bvid)
+                # print(code)
+                # print(result)
+                # 等待几秒
+                time.sleep(3)
+                # 判断result数组长度是否为0
+                if code == 0:
+                    if len(result) != 0:
+                        # content = "✨ 总共检索到" + str(len(result)) + "个视频，开始处理"
+                        # self.realTimeLogService.append_log(content)
+                        # writemessage(content)
+                        # 便利result数组
+                        for item in result:
+                            title = item['title']
+                            aid = item['aid']
+                            cid = item['cid']
+                            ctime = item['ctime']
+
+                            title = self._sanitize_filename(title)    # 删除文件名中的非法字符
+                            
+                            # print(f"最新集AID: {aid}")
+                            # content = f"🧸 集CID: {cid}"
+                            content = f"🧸 标题：{title}"
+                            # print(content)
+                            self.realTimeLogService.append_log(content)
+                            # break
+                            # writemessage(content)
+                            # print(content)
+                            # print(f"最新集时间: {ctime}")
+                            
+                            # 检查是否已经下载过了
+                            if self.checkcid(cid):
+                                content = "🔮 已经下载过了"
+                                # writemessage(content)
+                                self.realTimeLogService.append_log(content)
+                                # print(content)
+                            else:
+                                # 如果没下载则进行下载
+                                code, downurl = self.getdownurl(aid, cid)
+                                # 如果code==0则获取成功，否则尝试获取三次
+                                if code == 0:
+                                    # content = f"🎯 下载地址: {downurl}"
+                                    # self.realTimeLogService.append_log(content)
+                                    time.sleep(3)
+                                    # 根据下载地址下载文件
+                                    name = title
+                                    # name = str(self.get_current_date_formatted()) + "_" + str(cid) # "今天时间 + cid"
+                                    path = self.configManager.video_path + name +  ".mp4"
+                                    path = os.path.join(self.configManager.video_path, name + ".mp4")
+                                    content = f"💾 开始下载，保存路径：{path}"
+                                    # content = f"💾 开始下载 {title}"
+                                    self.realTimeLogService.append_log(content)
+                                    downflag = 0
+                                    downflag = self.download_file(downurl, path)
+                                    # downflag = self.download_file(downurl, self.configManager.video_path, title)
+                                    # 如果downflag 为1则下载成功，否则尝试下载三次
+                                    if downflag == 0:
+                                        content = "❗ 下载失败，尝试下载三次"
+                                        self.realTimeLogService.append_log(content)
+                                        for i in range(int(self.downMaxCount)):
+                                            content = f"❗ 尝试下载第{i+1}次"
+                                            self.realTimeLogService.append_log(content)
+                                            downflag = self.download_file(downurl, path)
+                                            # downflag = self.download_file(downurl, self.configManager.video_path, title)
+                                            if downflag == 1:
+                                                content = "✅ 下载成功"
+                                                self.realTimeLogService.append_log(content)
+                                                break
+                                            # else:
+                                            #     print("❌ 下载失败，尝试重新下载")
+                                            #     time.sleep(3)
+
+                                    time.sleep(10)
+                                else:
+                                    # content = "❌ 获取下载地址失败\n"
+                                    # writemessage(content)
+                                    content = f"❗ 获取下载地址失败，尝试获取{self.urlMaxCount}次"
+                                    self.realTimeLogService.append_log(content)
+                                    for i in range(int(self.urlMaxCount)):
+                                        content = f"❗ 尝试获取下载地址第{i+1}次"
+                                        self.realTimeLogService.append_log(content)
+                                        code, downurl = self.getdownurl(aid, cid)
+                                        if code == 0:
+                                            # content = f"🎯 下载地址: {downurl}"
+                                            # 根据下载地址下载文件
+                                            name = title
+                                            # name = self._sanitize_filename(name)    # 删除文件名中的非法字符
+                                            # name = str(AppFunctions.get_current_date_formatted()) + "_" + str(cid) # "今天时间 + cid"
+                                            path = self.configManager.video_path + name +  ".mp4"
+                                            path = os.path.join(self.configManager.video_path, name + ".mp4")
+                                            content = f"💾 开始进行下载，保存路径: {path}"
+                                            # content = f"💾 开始下载 {title}"
+                                            self.realTimeLogService.append_log(content)
+                                            downflag = 0
+                                            downflag = self.download_file(downurl, path)
+                                            # downflag = self.download_file(downurl, self.configManager.video_path, title)
+                                            # 如果downflag 为1则下载成功，否则尝试下载三次
+                                            if downflag == 0:
+                                                content = f"❗ 尝试下载{self.downMaxCount}次"
+                                                self.realTimeLogService.append_log(content)
+                                                for i in range(int(self.downMaxCount)):
+                                                    content = f"❗ 尝试下载第{i+1}次"
+                                                    self.realTimeLogService.append_log(content)
+                                                    downflag = self.download_file(downurl, path)
+                                                    if downflag == 1:
+                                                        content = "✅ 下载成功"
+                                                        self.realTimeLogService.append_log(content)
+                                                        break
+                                                    # else:
+                                                    #     print("❌ 下载失败，尝试重新下载")
+                                                    #     time.sleep(3)
+
+                                            time.sleep(10)
+                                            break
+                                        else:
+                                            # print("❌ 获取下载地址失败，尝试重新获取")
+                                            time.sleep(3)
+
+                    else:
+                        content = "🎈 无视频"
+                        self.realTimeLogService.append_log(content)
+                        self.writemessage(content)
+                else:
+                    content = "❌ 获取失败"
+                    self.realTimeLogService.append_log(content)
+                    self.writemessage(content)
+                time.sleep(10)
                 
         # print(message)
         

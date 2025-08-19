@@ -10,7 +10,7 @@ import os
 from urllib.parse import quote
 import random
 import math
-import qrcode
+# import qrcode
 import threading
 import gzip
 from io import BytesIO
@@ -21,19 +21,31 @@ class DynamicThread(QThread):
     signal = Signal(str)
 
     def __init__(self, **kwargs):
-        super().__init__()
+        super().__init__()  # 添加这行来正确初始化父类
         self.parent = kwargs.get('parent', '')
         self.cron_name = kwargs.get('cron_name', '')
         self.dynamicService = kwargs.get('dynamicService', '')
         self.logService = kwargs.get('logService', '')
         self.realTimeLogService = RealTimeLogService(parent = self.parent,)
 
+        # print(self.parent)
+        # print(self.cron_name)
+        # print(self.dynamicService)
+        # print(self.logService)
+        # print(self.realTimeLogService)
+
     def run(self):
         try:
             # with QMutexLocker(self.parent.mutex):
                 # self.parent.mutex.lock()
-            self.realTimeLogService.clear_log()
-            self.realTimeLogService.show_default_log()
+
+            # self.realTimeLogService.clear_log()
+            # self.realTimeLogService.show_default_log()
+            # 清空日志（注意：这些操作应该通过信号在主线程中执行）
+            # 为了解决线程安全问题，我们不在这里直接调用UI方法
+            self.signal.emit("[LOG_CLEAR]")  # 发送特殊信号让主线程清空日志
+            self.signal.emit("[LOG_DEFAULT]")  # 发送特殊信号让主线程显示默认日志
+
             # 执行主要任务
             self.dynamicService.run_task_down(realTimeLogService = self.realTimeLogService, logService =  self.logService, cron_name = self.cron_name)
             # print(self.cron_name)
